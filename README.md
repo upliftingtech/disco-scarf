@@ -1,2 +1,2 @@
 # disco-scarf
-An animated LED scarf. The animation engine is fairly sophisticated.
+An animated LED scarf using Arduino and FastLED. The animation engine is fairly sophisticated.
