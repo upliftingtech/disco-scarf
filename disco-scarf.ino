@@ -1,10 +1,11 @@
 // Version 0.1 Putting together the animationData struck and some stubs for functions.
 //             Stores a function pointer in the struct.
-//         0.2 Lets switch to an integer to iden#FF6B06tify the animation function in the struct since we can't
+//         0.2 Lets switch to an integer to identify the animation function in the struct since we can't
 //             communicate the function pointer across the radio.
 //         0.3 Moving some of the code from main loop to chaseAnimation function
 //         0.4 Add in switch statement to pick appropriate animation
 //         0.5 Add more animations
+//         0.6 Verified to compile with FastLED 3.4.0. Runs. Yay.
 
 #include "FastLED.h"
 
@@ -172,8 +173,7 @@ void loop() {
     previousAnimateTime = currentAnimateTime;
   }
   
-/* Pause chase  
-  
+ 
   currentStartChaseTime = millis();
   if (currentStartChaseTime - previousStartChaseTime > START_CHASE_INTERVAL)
   {
@@ -193,10 +193,8 @@ void loop() {
     previousStartChaseTime = currentStartChaseTime;
   } 
 
-  end chase * paused */
 
-
-/*  currentStartBreathTime = millis();
+  currentStartBreathTime = millis();
   if (currentStartBreathTime - previousStartBreathTime > blueBreathInterval)
   {
     int n;
@@ -214,31 +212,6 @@ void loop() {
     animation[n].animationID = 2;
     } 
     previousStartBreathTime = currentStartBreathTime;
-  } */
-  
-    currentStartBreathTime = millis();
-  if (currentStartBreathTime - previousStartBreathTime > blueBreathInterval)
-  {
-    int n;
-    //find a new slot to put the data in
-    n = findEmptyAnimatonDataSlot();
-    if ( n != -1) // if n == -1 than a slot wasn't found
-    {
-    //start the breath animation
-    //blueBreathInterval = random(1000,15000); //for scarf - bigger is more duration 
-                                            // so things move slower
-    blueBreathInterval = random(20000,100000); //for sidebar
- 
+  } 
     
-    animation[n].startTime = currentStartBreathTime;
-    animation[n].duration = blueBreathInterval; 
-    animation[n].numFrames = 628;
-    animation[n].isRunning = true;
-    animation[n].animationID = 3;
-    } 
-    previousStartBreathTime = currentStartBreathTime;
-  }
-
-  
 } // end void loop()
-
