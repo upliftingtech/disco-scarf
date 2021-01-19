@@ -1,6 +1,6 @@
 // Version 0.1 Putting together the animationData struck and some stubs for functions.
 //             Stores a function pointer in the struct.
-//         0.2 Lets switch to an integer to iden#FF6B06tify the animation function in the struct since we can't
+//         0.2 Lets switch to an integer to identify the animation function in the struct since we can't
 //             communicate the function pointer across the radio.
 //         0.3 Moving some of the code from main loop to chaseAnimation function
 //         0.4 Add in switch statement to pick appropriate animation
