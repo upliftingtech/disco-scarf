@@ -127,6 +127,8 @@ void loop() {
   currentAnimateTime = millis();
   if (currentAnimateTime - previousAnimateTime > ANIMATE_INTERVAL)
   {
+	previousAnimateTime = currentAnimateTime;
+  	  
     int i;
     int n;
     //zero strip
@@ -165,12 +167,11 @@ void loop() {
           initializeAnimationData(n);
         }
       }
-    }
+    } //end of for every animation loop
          
     //display strip
     FastLED.show();
 
-    previousAnimateTime = currentAnimateTime;
   }
   
  
