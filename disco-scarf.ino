@@ -5,7 +5,7 @@
 //         0.3 Moving some of the code from main loop to chaseAnimation function
 //         0.4 Add in switch statement to pick appropriate animation
 //         0.5 Add more animations
-//         0.6 Verified to compile with FastLED 3.4.0
+//         0.6 Verified to compile with FastLED 3.4.0, but white animation not showing up.
 
 #include "FastLED.h"
 
@@ -173,8 +173,7 @@ void loop() {
     previousAnimateTime = currentAnimateTime;
   }
   
-/* Pause chase  
-  
+ 
   currentStartChaseTime = millis();
   if (currentStartChaseTime - previousStartChaseTime > START_CHASE_INTERVAL)
   {
@@ -194,10 +193,8 @@ void loop() {
     previousStartChaseTime = currentStartChaseTime;
   } 
 
-  end chase * paused */
 
-
-/*  currentStartBreathTime = millis();
+  currentStartBreathTime = millis();
   if (currentStartBreathTime - previousStartBreathTime > blueBreathInterval)
   {
     int n;
@@ -215,9 +212,9 @@ void loop() {
     animation[n].animationID = 2;
     } 
     previousStartBreathTime = currentStartBreathTime;
-  } */
+  } 
   
-    currentStartBreathTime = millis();
+  /*  currentStartBreathTime = millis();
   if (currentStartBreathTime - previousStartBreathTime > blueBreathInterval)
   {
     int n;
@@ -239,6 +236,7 @@ void loop() {
     } 
     previousStartBreathTime = currentStartBreathTime;
   }
+  */
 
   
 } // end void loop()
