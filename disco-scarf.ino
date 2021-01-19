@@ -5,7 +5,7 @@
 //         0.3 Moving some of the code from main loop to chaseAnimation function
 //         0.4 Add in switch statement to pick appropriate animation
 //         0.5 Add more animations
-//         0.6 Verified to compile with FastLED 3.4.0, but white animation not showing up.
+//         0.6 Verified to compile with FastLED 3.4.0. Runs. Yay.
 
 #include "FastLED.h"
 
@@ -213,30 +213,5 @@ void loop() {
     } 
     previousStartBreathTime = currentStartBreathTime;
   } 
-  
-  /*  currentStartBreathTime = millis();
-  if (currentStartBreathTime - previousStartBreathTime > blueBreathInterval)
-  {
-    int n;
-    //find a new slot to put the data in
-    n = findEmptyAnimatonDataSlot();
-    if ( n != -1) // if n == -1 than a slot wasn't found
-    {
-    //start the breath animation
-    //blueBreathInterval = random(1000,15000); //for scarf - bigger is more duration 
-                                            // so things move slower
-    blueBreathInterval = random(20000,100000); //for sidebar
- 
     
-    animation[n].startTime = currentStartBreathTime;
-    animation[n].duration = blueBreathInterval; 
-    animation[n].numFrames = 628;
-    animation[n].isRunning = true;
-    animation[n].animationID = 3;
-    } 
-    previousStartBreathTime = currentStartBreathTime;
-  }
-  */
-
-  
 } // end void loop()
