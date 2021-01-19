@@ -5,6 +5,7 @@
 //         0.3 Moving some of the code from main loop to chaseAnimation function
 //         0.4 Add in switch statement to pick appropriate animation
 //         0.5 Add more animations
+//         0.6 Verified to compile with FastLED 3.4.0
 
 #include "FastLED.h"
 
@@ -241,4 +242,3 @@ void loop() {
 
   
 } // end void loop()
-
