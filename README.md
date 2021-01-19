@@ -3,4 +3,4 @@ An animated LED scarf using Arduino and FastLED. The animation engine is fairly 
 
 Dependencies:
 
-FastLED - https://github.com/FastLED/FastLED (originally built with version many years ago - make sure it works with latest)
+FastLED - https://github.com/FastLED/FastLED - last checked with version 3.4.0
