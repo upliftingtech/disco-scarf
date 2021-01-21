@@ -204,13 +204,14 @@ void loop() {
     if ( n != -1) // if n == -1 than a slot wasn't found
     {
     //start the breath animation
-    blueBreathInterval = random(2000,15000);
+    blueBreathInterval = random(5000,15000);
     
     animation[n].startTime = currentStartBreathTime;
     animation[n].duration = blueBreathInterval; 
-    animation[n].numFrames = NUM_LEDS;
+    animation[n].numFrames = 314; // it takes 314 frames for the sin function in this animation to cycle around
     animation[n].isRunning = true;
-    animation[n].animationID = 3; //3 = starts blue sweep
+    animation[n].animationID = 2; //2 = starts blue breath
+    //animation[n].animationID = 3; //3 = starts blue sweep
     } 
     previousStartBreathTime = currentStartBreathTime;
   } 
