@@ -186,7 +186,7 @@ void loop() {
     //start the chase animation
     
     animation[n].startTime = currentStartChaseTime;
-    animation[n].duration = random(1000,10000); // miliseconds
+    animation[n].duration = random(1000,7000); // miliseconds
     animation[n].numFrames = NUM_LEDS;
     animation[n].isRunning = true;
     animation[n].animationID = 1;
@@ -204,7 +204,8 @@ void loop() {
     if ( n != -1) // if n == -1 than a slot wasn't found
     {
     //start the breath animation
-    blueBreathInterval = random(5000,15000);
+    blueBreathInterval = random(4000,5000); // Average adult breath rate is around 1 breath every 3 to 4 seconds.
+                                            // But I want it to be super soothing so lengthen a bit.
     
     animation[n].startTime = currentStartBreathTime;
     animation[n].duration = blueBreathInterval; 
