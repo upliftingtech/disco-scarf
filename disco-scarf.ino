@@ -208,9 +208,9 @@ void loop() {
     
     animation[n].startTime = currentStartBreathTime;
     animation[n].duration = blueBreathInterval; 
-    animation[n].numFrames = 314;
+    animation[n].numFrames = NUM_LEDS;
     animation[n].isRunning = true;
-    animation[n].animationID = 2;
+    animation[n].animationID = 3; //3 = starts blue sweep
     } 
     previousStartBreathTime = currentStartBreathTime;
   } 
