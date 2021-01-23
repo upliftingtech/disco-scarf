@@ -11,21 +11,33 @@
 
 #include "FastLED.h"
 
-// The length of the led strip can be set here:
-#define NUM_LEDS 113
+// FAST LED MACROS
 
-// WS2812 strip leds have ony one data pin that doubles as a clock pin.
-// Thus no need to define the clock pin.
-   #define DATA_PIN 6
-// #define CLOCK_PIN 13
+	// The length of the led strip can be set here:
+	#define NUM_LEDS 113
+	
+	// WS2812 strip leds have ony one data pin that doubles as a clock pin.
+	// Thus no need to define the clock pin.
+	#define DATA_PIN 6
+	// #define CLOCK_PIN 13
 
-#define FULL_ON 150
-#define MAX_NUM_ANIMATIONS 20 // 0 - 255
-#define ANIMATE_INTERVAL 10 // milliseconds
-#define START_CHASE_INTERVAL 1000 // miliseconds
+// MACROS
+
+	// Control the absolute brightness of the strip
+	#define FULL_ON 150
+	
+	// The number of animations to create memory for and loop on
+	#define MAX_NUM_ANIMATIONS 20 // 0 - 255
+	
+	// Drop into the animate function this often
+	#define ANIMATE_INTERVAL 10 // milliseconds
+	
+	// Start a chase animation this often
+	#define START_CHASE_INTERVAL 1000 // miliseconds
+
+// GLOBALS
 unsigned short blueBreathInterval = 1;
 unsigned short blueSweepInterval = 1;
-
 
 struct animationData { 
       unsigned long startTime;
@@ -34,10 +46,7 @@ struct animationData {
       boolean isRunning;
       uint8_t animationID; // 0 to 255
 };
-              
-
 animationData animation[MAX_NUM_ANIMATIONS];
-
 
 CRGB leds[NUM_LEDS]; // Define the array of leds
 
