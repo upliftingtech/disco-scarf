@@ -6,16 +6,17 @@
 //         0.4 Add in switch statement to pick appropriate animation
 //         0.5 Add more animations
 //         0.6 Verified to compile with FastLED 3.4.0. Runs. Yay.
+//         0.7 Animations fixed back to pte git-hub import
+//         0.8 Better comments
 
 #include "FastLED.h"
 
-// How many leds in your strip?
+// The length of the led strip can be set here:
 #define NUM_LEDS 113
 
-// For led chips like Neopixels, which have a data line, ground, and power, you just
-// need to define DATA_PIN.  For led chipsets that are SPI based (four wires - data, clock,
-// ground, and power), like the LPD8806 define both DATA_PIN and CLOCK_PIN
-#define DATA_PIN 6
+// WS2812 strip leds have ony one data pin that doubles as a clock pin.
+// Thus no need to define the clock pin.
+   #define DATA_PIN 6
 // #define CLOCK_PIN 13
 
 #define FULL_ON 150
