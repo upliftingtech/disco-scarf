@@ -23,6 +23,8 @@
 #define ANIMATE_INTERVAL 10 // milliseconds
 #define START_CHASE_INTERVAL 1000 // miliseconds
 unsigned short blueBreathInterval = 1;
+unsigned short blueSweepInterval = 1;
+
 
 struct animationData { 
       unsigned long startTime;
@@ -44,6 +46,8 @@ unsigned long currentStartChaseTime = 0;
 unsigned long previousStartChaseTime = 0;
 unsigned long currentStartBreathTime = 0;
 unsigned long previousStartBreathTime = 0;
+unsigned long currentStartSweepTime = 0;
+unsigned long previousStartSweepTime = 0;
 
 void chaseAnimation(int frame)
 {
@@ -194,7 +198,7 @@ void loop() {
     previousStartChaseTime = currentStartChaseTime;
   } 
 
-
+/* comment out blue breath for now
   currentStartBreathTime = millis();
   if (currentStartBreathTime - previousStartBreathTime > blueBreathInterval)
   {
@@ -212,9 +216,31 @@ void loop() {
     animation[n].numFrames = 314; // it takes 314 frames for the sin function in this animation to cycle around
     animation[n].isRunning = true;
     animation[n].animationID = 2; //2 = starts blue breath
-    //animation[n].animationID = 3; //3 = starts blue sweep
     } 
     previousStartBreathTime = currentStartBreathTime;
   } 
+  End blue breath comment out*/
+  
+  currentStartSweepTime = millis();
+  if (currentStartSweepTime - previousStartSweepTime > blueSweepInterval)
+  {
+	  int n;
+	  //find a new slot to put the data in
+	  n = findEmptyAnimatonDataSlot();
+	  if ( n != -1) // if n == -1 than a slot wasn't found
+	  {
+		  //start the blue sweep animation
+		  blueSweepInterval = random(4000,5000); // Average adult breath rate is around 1 breath every 3 to 4 seconds.
+		  // But I want it to be super soothing so lengthen a bit.
+		  
+		  animation[n].startTime = currentStartSweepTime;
+		  animation[n].duration = blueSweepInterval; 
+		  animation[n].numFrames = 628; // it takes 628?? frames for the sin function in this animation to cycle around
+		  animation[n].isRunning = true;
+		  animation[n].animationID = 3; //3 = starts blue sweep
+	  } 
+	  previousStartSweepTime = currentStartSweepTime;
+  } 
+
     
 } // end void loop()
