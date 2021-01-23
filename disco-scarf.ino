@@ -194,7 +194,7 @@ void loop() {
     previousStartChaseTime = currentStartChaseTime;
   } 
 
-
+/* comment out blue breath for now
   currentStartBreathTime = millis();
   if (currentStartBreathTime - previousStartBreathTime > blueBreathInterval)
   {
@@ -212,9 +212,31 @@ void loop() {
     animation[n].numFrames = 314; // it takes 314 frames for the sin function in this animation to cycle around
     animation[n].isRunning = true;
     animation[n].animationID = 2; //2 = starts blue breath
-    //animation[n].animationID = 3; //3 = starts blue sweep
     } 
     previousStartBreathTime = currentStartBreathTime;
   } 
+  End blue breath comment out*/
+  
+  currentStartBreathTime = millis();
+  if (currentStartBreathTime - previousStartBreathTime > blueBreathInterval)
+  {
+	  int n;
+	  //find a new slot to put the data in
+	  n = findEmptyAnimatonDataSlot();
+	  if ( n != -1) // if n == -1 than a slot wasn't found
+	  {
+		  //start the blue sweep animation
+		  blueBreathInterval = random(4000,5000); // Average adult breath rate is around 1 breath every 3 to 4 seconds.
+		  // But I want it to be super soothing so lengthen a bit.
+		  
+		  animation[n].startTime = currentStartBreathTime;
+		  animation[n].duration = blueBreathInterval; 
+		  animation[n].numFrames = 628; // it takes 628?? frames for the sin function in this animation to cycle around
+		  animation[n].isRunning = true;
+		  animation[n].animationID = 3; //3 = starts blue sweep
+	  } 
+	  previousStartBreathTime = currentStartBreathTime;
+  } 
+
     
 } // end void loop()
