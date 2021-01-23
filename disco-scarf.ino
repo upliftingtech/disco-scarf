@@ -39,17 +39,23 @@
 unsigned short blueBreathInterval = 1;
 unsigned short blueSweepInterval = 1;
 
-struct animationData { 
-      unsigned long startTime;
-      unsigned short duration; //0 to 65,535 miliseconds
-      unsigned short numFrames; //0 to 65,535
-      boolean isRunning;
-      uint8_t animationID; // 0 to 255
+// define the data structure to hold information about one animation
+// I'm guessing this would be the place to start making objects if I go to object code
+struct animationData 
+{ 
+  unsigned long startTime;
+  unsigned short duration; //0 to 65,535 miliseconds
+  unsigned short numFrames; //0 to 65,535
+  boolean isRunning;
+  uint8_t animationID; // 0 to 255
 };
+
+// define an array of animations 
 animationData animation[MAX_NUM_ANIMATIONS];
 
 CRGB leds[NUM_LEDS]; // Define the array of leds
 
+// these are all just timers. simplify?
 unsigned long currentAnimateTime = 0;
 unsigned long previousAnimateTime = 0;
 unsigned long currentStartChaseTime = 0;
@@ -58,6 +64,8 @@ unsigned long currentStartBreathTime = 0;
 unsigned long previousStartBreathTime = 0;
 unsigned long currentStartSweepTime = 0;
 unsigned long previousStartSweepTime = 0;
+
+// FUNCTIONS
 
 void chaseAnimation(int frame)
 {
