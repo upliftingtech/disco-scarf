@@ -134,6 +134,8 @@ int findEmptyAnimatonDataSlot()
     return -1;
 }
 
+// Arduino function - runs once at start 
+
 void setup() { 
   uint8_t i; // 0 - 255
   
@@ -144,6 +146,8 @@ void setup() {
     initializeAnimationData(i);
   }
 }
+
+// Arduino function - gets looped forever after setup()
 
 void loop() { 
   currentAnimateTime = millis();
@@ -193,7 +197,6 @@ void loop() {
          
     //display strip
     FastLED.show();
-
   }
   
  
@@ -258,7 +261,5 @@ void loop() {
 		  animation[n].animationID = 3; //3 = starts blue sweep
 	  } 
 	  previousStartSweepTime = currentStartSweepTime;
-  } 
-
-    
-} // end void loop()
+  }   
+} // end main Arduino loop
