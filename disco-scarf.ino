@@ -6,40 +6,56 @@
 //         0.4 Add in switch statement to pick appropriate animation
 //         0.5 Add more animations
 //         0.6 Verified to compile with FastLED 3.4.0. Runs. Yay.
+//         0.7 Animations fixed back to pte git-hub import
+//         0.8 Better comments
 
 #include "FastLED.h"
 
-// How many leds in your strip?
-#define NUM_LEDS 113
+// FAST LED MACROS
 
-// For led chips like Neopixels, which have a data line, ground, and power, you just
-// need to define DATA_PIN.  For led chipsets that are SPI based (four wires - data, clock,
-// ground, and power), like the LPD8806 define both DATA_PIN and CLOCK_PIN
-#define DATA_PIN 6
-// #define CLOCK_PIN 13
+	// The length of the led strip can be set here:
+	#define NUM_LEDS 113
+	
+	// WS2812 strip leds have ony one data pin that doubles as a clock pin.
+	// Thus no need to define the clock pin.
+	#define DATA_PIN 6
+	// #define CLOCK_PIN 13
 
-#define FULL_ON 150
-#define MAX_NUM_ANIMATIONS 20 // 0 - 255
-#define ANIMATE_INTERVAL 10 // milliseconds
-#define START_CHASE_INTERVAL 1000 // miliseconds
+// MACROS
+
+	// Control the absolute brightness of the strip
+	#define FULL_ON 150
+	
+	// The number of animations to create memory for and loop on
+	#define MAX_NUM_ANIMATIONS 20 // 0 - 255
+	
+	// Drop into the animate function this often
+	#define ANIMATE_INTERVAL 10 // milliseconds
+	
+	// Start a chase animation this often
+	#define START_CHASE_INTERVAL 1000 // miliseconds
+
+// GLOBALS
 unsigned short blueBreathInterval = 1;
 unsigned short blueSweepInterval = 1;
 
-
-struct animationData { 
-      unsigned long startTime;
-      unsigned short duration; //0 to 65,535 miliseconds
-      unsigned short numFrames; //0 to 65,535
-      boolean isRunning;
-      uint8_t animationID; // 0 to 255
+// define the data structure to hold information about one animation
+// I'm guessing this would be the place to start making objects if I go to object code
+struct animationData 
+{ 
+  unsigned long startTime;
+  unsigned short duration; //0 to 65,535 miliseconds
+  unsigned short numFrames; //0 to 65,535
+  boolean isRunning;
+  uint8_t animationID; // 0 to 255
 };
-              
 
+// define an array of animations 
 animationData animation[MAX_NUM_ANIMATIONS];
-
 
 CRGB leds[NUM_LEDS]; // Define the array of leds
 
+// these are all just timers. simplify?
 unsigned long currentAnimateTime = 0;
 unsigned long previousAnimateTime = 0;
 unsigned long currentStartChaseTime = 0;
@@ -48,6 +64,8 @@ unsigned long currentStartBreathTime = 0;
 unsigned long previousStartBreathTime = 0;
 unsigned long currentStartSweepTime = 0;
 unsigned long previousStartSweepTime = 0;
+
+// FUNCTIONS
 
 void chaseAnimation(int frame)
 {
@@ -116,6 +134,8 @@ int findEmptyAnimatonDataSlot()
     return -1;
 }
 
+// Arduino function - runs once at start 
+
 void setup() { 
   uint8_t i; // 0 - 255
   
@@ -126,6 +146,8 @@ void setup() {
     initializeAnimationData(i);
   }
 }
+
+// Arduino function - gets looped forever after setup()
 
 void loop() { 
   currentAnimateTime = millis();
@@ -175,7 +197,6 @@ void loop() {
          
     //display strip
     FastLED.show();
-
   }
   
  
@@ -240,7 +261,5 @@ void loop() {
 		  animation[n].animationID = 3; //3 = starts blue sweep
 	  } 
 	  previousStartSweepTime = currentStartSweepTime;
-  } 
-
-    
-} // end void loop()
+  }   
+} // end main Arduino loop
